@@ -82,4 +82,26 @@ return {
     --   },
     -- }
   end,
+  plugins = {
+    {
+      "Saecki/crates.nvim",
+      ft = {"rust", "toml"},
+    },
+    {
+      "hrsh7th/nvim-cmp",
+      opts = function(_, opts)
+        -- opts parameter is the default options table
+        -- the function is lazy loaded so cmp is able to be required
+        local cmp = require("cmp")
+
+        -- modify the sources part of the options table
+        opts.sources = cmp.config.sources {
+          { name = "crates"},
+        }
+
+        -- return the new table to be used
+        return opts
+      end,
+    }
+  }
 }
