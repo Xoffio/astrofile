@@ -46,4 +46,7 @@ git clone https://github.com/Xoffio/xo_astro_conf ~\AppData\Local\nvim\lua\user
 
 ```shell
 nvim
+
+# Start Mason to get the rest of packages
+:Mason
 ```
