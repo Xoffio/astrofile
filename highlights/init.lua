@@ -3,6 +3,15 @@ return {
   -- Normal = { bg = "#000000" },
   -- Normal = {
   --   ctermbg = "NONE",
-  --   -- guibg = "NONE",
+  --   --guibg = "NONE",
+  -- },
+  -- NonText = {
+  --   ctermbg = "NONE",
+  -- },
+  -- SignColumn = {
+  --   ctermbg = "NONE",
+  -- },
+  -- VertSplit = {
+  --   ctermbg = "NONE",
   -- },
 }
