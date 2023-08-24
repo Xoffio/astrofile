@@ -1,3 +1,13 @@
+local function tabnine_get_status_words()
+  local tmp_status = require('tabnine.status').status()
+  local words = {}
+  for word in tmp_status:gmatch("%S+") do
+    table.insert(words, word)
+  end
+
+  return words
+end
+
 return {
   {
     "rebelot/heirline.nvim",
@@ -50,6 +60,26 @@ return {
           },
         },
         status.component.file_info { filetype = {}, filename = false, file_modified = false },
+
+        -- Tabnine Icon
+        {
+          status.component.builder {
+            -- This dedides which icon is used based on tabnine status
+            { 
+              provider = function (self)
+                local icon = tabnine_get_status_words()[3] == "disabled" and "󱚧" or "󰚩"
+                return icon
+              end 
+            },
+
+            -- This dedides which color is used based on tabnine status
+            hl = function (self)
+              local icon = tabnine_get_status_words()[3] == "disabled" and {fg = "buffer_overflow_fg"} or {fg = "diag_HINT"}
+              return icon
+            end,
+          }
+        },
+
         status.component.git_diff(),
         status.component.diagnostics(),
         status.component.fill(),
