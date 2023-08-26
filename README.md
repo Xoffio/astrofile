@@ -36,10 +36,10 @@ nvim
 
 ```shell
 # Linux & MacOS
-git clone https://github.com/Xoffio/xo_astro_conf ~/.config/nvim/lua/user
+git clone https://github.com/Xoffio/astrofile ~/.config/nvim/lua/user
 
 # Win
-git clone https://github.com/Xoffio/xo_astro_conf ~\AppData\Local\nvim\lua\user
+git clone https://github.com/Xoffio/astrofile ~\AppData\Local\nvim\lua\user
 ```
 
 #### Start Neovim
