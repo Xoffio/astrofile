@@ -21,6 +21,10 @@ return {
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         -- "prettier",
         "stylua",
+
+        -- WARNING: remove `rustfmt` I'm getting a deprecation warning
+        -- `rustfmt` should now be installed via rustup
+        -- TODO: Test a new environment before removing it.
         "rustfmt",
         "shellcheck",
         "shfmt",
