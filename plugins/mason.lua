@@ -25,7 +25,7 @@ return {
         -- WARNING: remove `rustfmt` I'm getting a deprecation warning
         -- `rustfmt` should now be installed via rustup
         -- TODO: Test a new environment before removing it.
-        "rustfmt",
+        -- "rustfmt",
         "shellcheck",
         "shfmt",
       })
