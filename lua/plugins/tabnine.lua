@@ -1,4 +1,5 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- NOTE: uncomment the next line to disable this plugin
+-- if true then return {} end
 
 -- Get platform dependant build script
 local function tabnine_build_path()
