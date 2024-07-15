@@ -6,7 +6,7 @@ This is an edited clone of [AstroNvim Template](https://github.com/AstroNvim/tem
 
 ## 🛠️ Installation
 
-#### Make a backup of your current NVIM and shared folder
+### Make a backup of your current NVIM and shared folder
 
 ```shell
 # Linux & MacOS
@@ -20,7 +20,7 @@ mv ~\AppData\Local\nvim ~\AppData\Local\nvim_bak
 mv ~\AppData\Local\nvim-data ~\AppData\Local\nvim-data_bak
 ```
 
-#### Clone this repository
+### Clone this repository
 
 ```shell
 # Linux & MacOS
@@ -30,7 +30,7 @@ git clone https://github.com/Xoffio/astrofile ~/.config/nvim
 git clone https://github.com/Xoffio/astrofile ~\AppData\Local\nvim
 ```
 
-#### Start Neovim
+### Start Neovim
 
 When starting for the first time, NVIM will install all packages necessary.
 
@@ -40,3 +40,18 @@ nvim
 
 Once all packages have been installed, close NVIM with `:wq` re-open it `nvim` and start `:Mason` just to make sure
 everything installed successfully.
+
+## Issues you might encounter
+
+### Rust
+
+If you get a warning about the `rust-analyzer` not working properly, that might mean that `rust-analyzer` is was not installed correctly by Mason
+You can install it by running `rustup component add rust-analyzer`
+
+---
+
+## Documentation
+
+- Any Astrocommunity plugin goes in `lua/community.lua`
+- If the system doesn't have Nerd Fonts then disable the option `opts.icons_enabled` in the file `lua/lazy_setup.lua`
+- To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
