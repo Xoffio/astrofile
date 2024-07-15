@@ -4,7 +4,7 @@
 
 ---@type LazySpec
 return {
-	-- use mason-lspconfig to configure LSP installations
+	-- Use mason-lspconfig to configure LSP installations
 	{
 		"williamboman/mason-lspconfig.nvim",
 		-- overrides `require("mason-lspconfig").setup(...)`
@@ -13,7 +13,8 @@ return {
 				"lua_ls",
 				"bashls",
 				"rust_analyzer",
-				-- add more arguments for adding more language servers
+				"harper_ls", -- Open source Grammarly
+				-- Add more arguments for adding more language servers
 			},
 		},
 	},
