@@ -1,54 +1,57 @@
-# AstroNvim User Configuration Example
+# Astrofile Template
 
-A user configuration template for [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+**NOTE:** This is for AstroNvim v4+
 
-This is a fork of [AstroNvim/user_example](https://github.com/AstroNvim/user_example)
+This is an edited clone of [AstroNvim Template](https://github.com/AstroNvim/template)
 
 ## 🛠️ Installation
 
-#### Make a backup of your current nvim and shared folder
+### Make a backup of your current NVIM and shared folder
 
 ```shell
 # Linux & MacOS
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
 
-# Win
+# Windows
 mv ~\AppData\Local\nvim ~\AppData\Local\nvim_bak
 mv ~\AppData\Local\nvim-data ~\AppData\Local\nvim-data_bak
 ```
 
-#### Clone AstroNvim
+### Clone this repository
 
 ```shell
 # Linux & MacOS
-git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+git clone https://github.com/Xoffio/astrofile ~/.config/nvim
 
-# Win
-git clone https://github.com/AstroNvim/AstroNvim ~\AppData\Local\nvim
+# Windows
+git clone https://github.com/Xoffio/astrofile ~\AppData\Local\nvim
 ```
 
-```shell
-# Open nvim
-nvim
-# let it install all the packages and then close it
-```
+### Start Neovim
 
-#### Clone the repository
-
-```shell
-# Linux & MacOS
-git clone https://github.com/Xoffio/astrofile ~/.config/nvim/lua/user
-
-# Win
-git clone https://github.com/Xoffio/astrofile ~\AppData\Local\nvim\lua\user
-```
-
-#### Start Neovim
+When starting for the first time, NVIM will install all packages necessary.
 
 ```shell
 nvim
-
-# Start Mason to get the rest of packages
-:Mason
 ```
+
+Once all packages have been installed, close NVIM with `:wq` re-open it `nvim` and start `:Mason` just to make sure
+everything installed successfully.
+
+## Issues you might encounter
+
+### Rust
+
+If you get a warning about the `rust-analyzer` not working properly, that might mean that `rust-analyzer` is was not installed correctly by Mason
+You can install it by running `rustup component add rust-analyzer`
+
+---
+
+## Documentation
+
+- Any Astrocommunity plugin goes in `lua/community.lua`
+- If the system doesn't have Nerd Fonts then disable the option `opts.icons_enabled` in the file `lua/lazy_setup.lua`
+- To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
