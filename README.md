@@ -45,13 +45,15 @@ everything installed successfully.
 
 ### Rust
 
-If you get a warning about the `rust-analyzer` not working properly, that might mean that `rust-analyzer` is was not installed correctly by Mason
+If you get a warning about the `rust-analyzer` not working properly, that probably means that `rust-analyzer` was not installed correctly by Mason
 You can install it by running `rustup component add rust-analyzer`
 
 ---
 
-## Documentation
+## Notes
 
 - Any Astrocommunity plugin goes in `lua/community.lua`
 - If the system doesn't have Nerd Fonts then disable the option `opts.icons_enabled` in the file `lua/lazy_setup.lua`
 - To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
+
+---
