@@ -149,6 +149,9 @@ return {
 				-- fill the rest of the statusline
 				-- the elements after this will appear in the middle of the statusline
 				status.component.fill(),
+				-- add a component to display command information like search and record status.
+				status.component.cmd_info(),
+				status.component.fill(),
 				-- add a component to display if the LSP is loading, disable showing running client names, and use no separator
 				status.component.lsp({
 					lsp_client_names = false,
