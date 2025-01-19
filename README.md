@@ -55,5 +55,6 @@ You can install it by running `rustup component add rust-analyzer`
 - Any Astrocommunity plugin goes in `lua/community.lua`
 - If the system doesn't have Nerd Fonts then disable the option `opts.icons_enabled` in the file `lua/lazy_setup.lua`
 - To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
+- `nvim` version tested: `v0.10.0`, `v0.10.3`
 
 ---
