@@ -56,6 +56,6 @@ You can install it by running `rustup component add rust-analyzer`
 - If the system doesn't have Nerd Fonts then disable the option `opts.icons_enabled` in the file `lua/lazy_setup.lua`
 - To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
 - To configure LSP installed by Mason edit the file `lua/astrolsp.lua` `opts>config`
-- `nvim` version tested: `v0.10.0`, `v0.10.3`
+- `nvim` version tested: `v0.10.0`, `v0.10.3` (https://github.com/neovim/neovim/releases/tag/v0.10.3)
 
 ---
