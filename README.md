@@ -1,6 +1,6 @@
 # Astrofile Template
 
-**NOTE:** This is for AstroNvim v4+
+**NOTE:** This is based on AstroNvim v5
 
 This is an edited clone of [AstroNvim Template](https://github.com/AstroNvim/template)
 
@@ -57,5 +57,6 @@ You can install it by running `rustup component add rust-analyzer`
 - To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
 - To configure LSP installed by Mason edit the file `lua/astrolsp.lua` `opts>config`
 - `nvim` version tested: `v0.10.0`, `v0.10.3` (https://github.com/neovim/neovim/releases/tag/v0.10.3)
+- I highly recommend installing ripgrep, lazygit, and nodejs
 
 ---

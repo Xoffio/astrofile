@@ -1,5 +1,10 @@
 local function tabnine_get_status_words()
-	local tmp_status = require("tabnine.status").status()
+	local ok, tabnine = pcall(require, "tabnine.status")
+	if not ok or type(tabnine.status) ~= "function" then
+		return {}
+	end
+
+	local tmp_status = tabnine.status()
 	local words = {}
 	for word in tmp_status:gmatch("%S+") do
 		table.insert(words, word)
@@ -132,16 +137,26 @@ return {
 						-- This decides which icon is used based on tabnine status
 						{
 							provider = function()
-								local icon = tabnine_get_status_words()[3] == "disabled" and "󱚧" or "󰚩"
+								local res = tabnine_get_status_words()
+								if #res == 0 then
+									return "!󱚧"
+								end
+
+								local icon = res[3] == "disabled" and "󱚧" or "󰚩"
 								return icon
 							end,
 						},
 
 						-- This decides which color is used based on tabnine status
 						hl = function()
-							local icon = tabnine_get_status_words()[3] == "disabled" and { fg = "buffer_overflow_fg" }
+							local res = tabnine_get_status_words()
+							if #res == 0 then
+								return { fg = "buffer_overflow_fg" }
+							end
+
+							local fg_color = res[3] == "disabled" and { fg = "buffer_overflow_fg" }
 								or { fg = "diag_HINT" }
-							return icon
+							return fg_color
 						end,
 					}),
 				},

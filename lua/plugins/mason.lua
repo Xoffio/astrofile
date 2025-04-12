@@ -1,45 +1,40 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
--- Customize Mason plugins
+-- Customize Mason
+
+-- NOTE: the feature "condition" is not working... I will get back to this later and fix it
 
 ---@type LazySpec
 return {
-	-- Use mason-lspconfig to configure LSP installations
-	{
-		"williamboman/mason-lspconfig.nvim",
-		-- overrides `require("mason-lspconfig").setup(...)`
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"bashls",
-				"rust_analyzer",
-				"harper_ls", -- Open source Grammarly
-				-- Add more arguments for adding more language servers
-			},
-		},
-	},
-	-- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
-	{
-		"jay-babu/mason-null-ls.nvim",
-		-- overrides `require("mason-null-ls").setup(...)`
-		opts = {
-			ensure_installed = {
-				"stylua",
-				"shellcheck",
-				"shfmt",
-				"bacon", -- for Rust
-				-- add more arguments for adding more null-ls sources
-			},
-		},
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		-- overrides `require("mason-nvim-dap").setup(...)`
-		opts = {
-			ensure_installed = {
-				"python",
-				-- add more arguments for adding more debuggers
-			},
-		},
-	},
+  -- use mason-tool-installer for automatically installing Mason packages
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- overrides `require("mason-tool-installer").setup(...)`
+    opts = {
+      -- Make sure to use the names found in `:Mason`
+      ensure_installed = {
+        -- install language servers
+        "lua-language-server",
+        "rust-analyzer",
+        -- "harper_ls", -- Open source Grammarly
+
+        -- install formatters
+        "stylua",
+        {
+          "shfmt",
+          condition = function() return (vim.fn.executable "bash" == 1) end,
+        },
+
+        -- install linters
+        { "shellcheck", condition = function() return os.execute "bash --version" == 1 end },
+        { "bacon", condition = function() return os.execute "cargo --version" == 1 end },
+
+        -- install debuggers
+        "debugpy",
+
+        -- install any other package
+        -- "tree-sitter-cli",
+      },
+    },
+  },
 }
