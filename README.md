@@ -38,6 +38,11 @@ When starting for the first time, NVIM will install all packages necessary.
 nvim
 ```
 
+## How to modify this setup
+
+- If you need to add custom mappins, you do that in `./lua/plugins/astrocore.lua` You can read [this](https://docs.astronvim.com/recipes/mappings/#add-custom-mappings)
+- If you want to add a new plugin, add it under `./lua/plugins/` You can refer to `./lua/plugins/tabnine.lua`
+
 Once all packages have been installed, close NVIM with `:wq` re-open it `nvim` and start `:Mason` just to make sure
 everything installed successfully.
 
@@ -56,7 +61,7 @@ You can install it by running `rustup component add rust-analyzer`
 - If the system doesn't have Nerd Fonts then disable the option `opts.icons_enabled` in the file `lua/lazy_setup.lua`
 - To change the default theme go to the file `lua/plugins/astroui.lua`, and set the option `opts.colorscheme`.
 - To configure LSP installed by Mason edit the file `lua/astrolsp.lua` `opts>config`
-- `nvim` version tested: `v0.10.0`, `v0.10.3` (https://github.com/neovim/neovim/releases/tag/v0.10.3)
+- `nvim` version tested: `v0.10.0`, `v0.10.3`, `v0.11.0` (https://github.com/neovim/neovim/releases/tag/v0.11.0)
 - I highly recommend installing ripgrep, lazygit, and nodejs
 
 ---
