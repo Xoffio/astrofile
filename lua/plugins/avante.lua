@@ -1,3 +1,6 @@
+-- NOTE: uncomment the next line to disable this plugin
+if true then return {} end
+
 local sysname = vim.uv.os_uname().sysname
 local is_win = sysname == "Windows_NT"
 

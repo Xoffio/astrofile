@@ -2,39 +2,40 @@
 
 -- Customize Mason
 
--- NOTE: the feature "condition" is not working... I will get back to this later and fix it
-
 ---@type LazySpec
 return {
   -- use mason-tool-installer for automatically installing Mason packages
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     -- overrides `require("mason-tool-installer").setup(...)`
-    opts = {
-      -- Make sure to use the names found in `:Mason`
-      ensure_installed = {
-        -- install language servers
+    opts = function(_, opts)
+      local tools = {
+        -- install language servers --
+        --
         "lua-language-server",
-        "rust-analyzer",
-        -- "harper_ls", -- Open source Grammarly
+        vim.fn.executable "cargo" == 1 and "rust-analyzer" or nil,
+        -- "harper_ls" -- Open source Grammarly
 
-        -- install formatters
-        "stylua",
-        {
-          "shfmt",
-          condition = function() return (vim.fn.executable "bash" == 1) end,
-        },
+        -- install formatters --
+        --
+        vim.fn.executable "cargo" == 1 and "stylua" or nil,
+        vim.fn.executable "bash" == 1 and "shfmt" or nil,
 
-        -- install linters
-        { "shellcheck", condition = function() return os.execute "bash --version" == 1 end },
-        { "bacon", condition = function() return os.execute "cargo --version" == 1 end },
+        -- install linters --
+        --
+        vim.fn.executable "bash" == 1 and "shellcheck" or nil,
+        vim.fn.executable "cargo" == 1 and "bacon" or nil,
 
-        -- install debuggers
-        "debugpy",
+        -- install debuggers --
+        --
+        vim.fn.executable "python" == 1 and "debugpy" or nil,
 
-        -- install any other package
+        -- install any other package --
+        --
         -- "tree-sitter-cli",
-      },
-    },
+      }
+
+      opts.ensure_installed = tools
+    end,
   },
 }
