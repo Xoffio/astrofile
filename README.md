@@ -26,8 +26,9 @@ mv ~\AppData\Local\nvim-data ~\AppData\Local\nvim-data_bak
 # Linux & MacOS
 git clone https://github.com/Xoffio/astrofile ~/.config/nvim
 
-# Windows
-git clone https://github.com/Xoffio/astrofile ~\AppData\Local\nvim
+# Windows (Powershell)
+cd ~\AppData\Local
+git clone https://github.com/Xoffio/astrofile nvim
 ```
 
 ### Start Neovim
