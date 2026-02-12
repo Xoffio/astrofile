@@ -66,3 +66,22 @@ You can install it by running `rustup component add rust-analyzer`
 - I highly recommend installing ripgrep, lazygit, and nodejs
 
 ---
+
+## Post-setup
+
+### Lazygit
+```bash
+# Windows 11
+winget install -e --id=JesseDuffield.lazygit
+```
+
+### Ripgrep
+
+```bash
+# Windows 11
+winget install BurntSushi.ripgrep.MSVC
+```
+
+### Nerd Fonts
+
+Download [Jet Brains Mono](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip)
