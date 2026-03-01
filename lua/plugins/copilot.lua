@@ -1,3 +1,4 @@
+-- Comment out the next line to enable copilot.
 if true then return {} end
 
 return {
@@ -8,10 +9,15 @@ return {
   opts = {
     suggestion = {
       enabled = true,
+      auto_trigger = true,
       keymap = {
         accept = "<C-l>",
-        next= "<C-n>",
+        next = "<C-n>",
       },
+    },
+    panel = {
+      enabled = false,
+      auto_refresh = true,
     },
   },
 }
