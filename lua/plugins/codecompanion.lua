@@ -38,10 +38,33 @@ return {
       --     adapter = "ollama",
       --   },
       -- },
+      extensions = {
+        -- Enable history extension to save and manage your chats
+        history = {
+          enabled = true,
+          opts = {
+            -- Keymap to open history from chat buffer (default: gh)
+            keymap = "gh",
+            -- Keymap to save the current chat manually (when auto_save is disabled)
+            save_chat_keymap = "sc",
+            ---On exiting and entering neovim, loads the last chat on opening chat
+            continue_last_chat = false,
+            ---When chat is cleared with `gx` delete the chat from history
+            delete_on_clearing_chat = false,
+            ---Directory path to save the chats
+            -- dir_to_save = vim.fn.stdpath "data" .. "/codecompanion-history",
+            dir_to_save = vim.fn.expand "~/Documents" .. "/codecompanion-history",
+            ---Enable detailed logging for history extension
+            enable_logging = false,
+          },
+        },
+      },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      -- Optional dependency to enable history extension
+      "ravitemer/codecompanion-history.nvim",
     },
   },
 }
