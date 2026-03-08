@@ -1,5 +1,5 @@
--- Comment out the next line to enable copilot.
-if true then return {} end
+local enable = false
+if not enable then return {} end
 
 return {
   "zbirenbaum/copilot.lua",
