@@ -34,6 +34,7 @@ return {
           left = { "", "" }, -- separator for the left side of the statusline
           right = { " ", "" }, -- separator for the right side of the statusline
           -- tab = { "", "" },
+          pixels = { "", "" },
         },
         -- add new colors that can be used by heirline
         colors = function(hl)
@@ -52,6 +53,29 @@ return {
           hl.nav_icon_bg = get_hlgroup("Boolean").fg
           hl.nav_fg = hl.nav_icon_bg
           hl.folder_icon_bg = get_hlgroup("Error").fg
+
+          -- Add some custom colors here
+          -- 3 shades for purple
+          hl.purple_dark = "#5D3FD3"
+          hl.purple = "#7B5FFF"
+          hl.purple_light = "#9D7FFF"
+          -- 3 shades for grey
+          hl.grey_dark = "#2E2E2E"
+          hl.grey = "#5A5A5A"
+          hl.grey_light = "#8A8A8A"
+          -- 3 shades for yellow
+          hl.yellow_dark = "#B58900"
+          hl.yellow = "#FFB300"
+          hl.yellow_light = "#FFD700"
+          -- 3 shades for red
+          hl.red_dark = "#DC322F"
+          hl.red = "#FF6E64"
+          hl.red_light = "#FF8E7B"
+          -- 3 shades for sky blue
+          hl.sky_blue_dark = "#268BD2"
+          hl.sky_blue = "#4FA1D6"
+          hl.sky_blue_light = "#7EC4DA"
+
           return hl
         end,
         attributes = {
@@ -91,6 +115,7 @@ return {
             color = function() return { main = status.hl.mode_bg(), right = "blank_bg" } end,
           },
         },
+
         -- we want an empty space here so we can use the component builder to make a new section with just an empty string
         status.component.builder {
           { provider = "" },
@@ -101,6 +126,7 @@ return {
             color = { main = "blank_bg", right = "file_info_bg" },
           },
         },
+
         -- add a section for the currently opened file information
         status.component.file_info {
           -- enable the file_icon and disable the highlighting based on filetype
@@ -113,6 +139,7 @@ return {
           -- define the section separator
           surround = { separator = "left", condition = false },
         },
+
         -- add a component for the current git branch if it exists and use no separator for the sections
         status.component.git_branch {
           git_branch = { padding = { left = 1 } },
@@ -122,14 +149,14 @@ return {
         },
         -- add a component for the current git diff if it exists and use no separator for the sections
         status.component.git_diff {
-          padding = { left = 1 },
+          padding = { left = 1, right = 1 },
           surround = { separator = "none" },
         },
 
         -- Copilot Icon
         {
           status.component.builder {
-            padding = { left = 1 },
+            -- padding = { left = 1 },
             {
               provider = function()
                 local ok, copilot = pcall(require, "copilot.client")
@@ -142,8 +169,12 @@ return {
             hl = function()
               local ok, copilot = pcall(require, "copilot.client")
               if not ok or type(copilot.is_disabled) ~= "function" then return { fg = "buffer_overflow_fg" } end
-              return copilot.is_disabled() and { fg = "buffer_overflow_fg" } or { fg = "diag_HINT" }
+              return copilot.is_disabled() and { fg = "buffer_overflow_fg" } or { fg = "sky_blue_light" }
             end,
+            surround = {
+              color = "file_info_bg",
+              separator = "pixels",
+            },
           },
         },
 
@@ -188,10 +219,16 @@ return {
         status.component.fill(),
         -- add a component for the current diagnostics if it exists and use the right separator for the section
         status.component.diagnostics { surround = { separator = "right" } },
+
         -- add a component to display LSP clients, disable showing LSP progress, and use the right separator
-        status.component.lsp {
-          lsp_progress = false,
-          surround = { separator = "right" },
+        {
+          status.component.lsp {
+            -- define a simple component where the provider is just a folder icon
+
+            -- lsp_attached = false,
+            lsp_progress = false,
+            -- surround = { separator = "right" },
+          },
         },
 
         -- NvChad has some nice icons to go along with information, so we can create a parent component to do this
