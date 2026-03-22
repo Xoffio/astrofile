@@ -1,3 +1,6 @@
+-- Create a variable to check if font is mono or not
+local is_mono_font = true
+
 local function tabnine_get_status_words()
   local ok, tabnine = pcall(require, "tabnine.status")
   if not ok or type(tabnine.status) ~= "function" then return {} end
@@ -34,7 +37,7 @@ return {
           left = { "", "" }, -- separator for the left side of the statusline
           right = { " ", "" }, -- separator for the right side of the statusline
           -- tab = { "", "" },
-          pixels = { "", "" },
+          pixels = { is_mono_font and "" or " ", is_mono_font and "" or " " },
         },
         -- add new colors that can be used by heirline
         colors = function(hl)
@@ -160,10 +163,13 @@ return {
             {
               provider = function()
                 local ok, copilot = pcall(require, "copilot.client")
+                local copilot_icon_on = is_mono_font and "" or " "
+                local copilot_icon_off = is_mono_font and "" or " "
+
                 if not ok or type(copilot.is_disabled) ~= "function" then
-                  return "" -- fallback if not loaded
+                  return copilot_icon_off -- fallback if not loaded
                 end
-                return copilot.is_disabled() and "" or ""
+                return copilot.is_disabled() and copilot_icon_off or copilot_icon_on
               end,
             },
             hl = function()
@@ -171,6 +177,10 @@ return {
               if not ok or type(copilot.is_disabled) ~= "function" then return { fg = "buffer_overflow_fg" } end
               return copilot.is_disabled() and { fg = "buffer_overflow_fg" } or { fg = "sky_blue_light" }
             end,
+            -- hl = {
+            --   fg = "sky_blue_light",
+            --   bg = "file_info_bg",
+            -- },
             surround = {
               color = "file_info_bg",
               separator = "pixels",
