@@ -18,6 +18,7 @@ return {
             opts = {
               number = false,
               relativenumber = false,
+              signcolumn = "no",
             },
           },
         },
@@ -71,6 +72,14 @@ return {
             enable_logging = false,
           },
         },
+        -- Enable spinner extension to show a spinner in chat status line during response generation
+        spinner = {
+          -- enabled = true, -- This is the default
+          opts = {
+            -- Your spinner configuration goes here
+            style = "native",
+          },
+        },
       },
     },
     dependencies = {
@@ -78,6 +87,8 @@ return {
       "nvim-treesitter/nvim-treesitter",
       -- Optional dependency to enable history extension
       "ravitemer/codecompanion-history.nvim",
+      -- Optional dependency to enable spinner status in chat.
+      "lalitmee/codecompanion-spinners.nvim",
     },
   },
 }
