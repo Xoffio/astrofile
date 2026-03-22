@@ -9,6 +9,19 @@ return {
     "olimorris/codecompanion.nvim",
     version = "^19.0.0",
     opts = {
+      display = {
+        chat = {
+          --   show_header_separator = false,
+          --   show_settings = false,
+          window = {
+            width = 0.35,
+            opts = {
+              number = false,
+              relativenumber = false,
+            },
+          },
+        },
+      },
       -- Keep this commented if using copilot.
       -- adapters = {
       --   ollama = function()
