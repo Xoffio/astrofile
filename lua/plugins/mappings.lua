@@ -19,6 +19,14 @@ return {
           --   desc = "Toggle CodeCompanionChat",
           -- },
         },
+        v = {
+          ["<leader>a"] = {
+            desc = " AI Tools",
+          },
+          ["<leader>ac"] = {
+            desc = " Code Companion",
+          },
+        },
       },
     },
   },

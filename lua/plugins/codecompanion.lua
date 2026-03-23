@@ -98,7 +98,7 @@ return {
       vim.keymap.set("n", "<leader>acc", "<cmd>CodeCompanionChat<cr>", { desc = "󱐏 Open New Chat" })
       vim.keymap.set("n", "<leader>act", "<cmd>CodeCompanionChat toggle<cr>", { desc = " Toggle Chat" })
       vim.keymap.set("n", "<leader>ach", "<cmd>CodeCompanionHistory<cr>", { desc = " History" })
-      vim.keymap.set("n", "<leader>aca", "<cmd>CodeCompanionActions<cr>", { desc = " Actions" })
+      vim.keymap.set({ "n", "v" }, "<leader>aca", "<cmd>CodeCompanionActions<cr>", { desc = " Actions" })
       vim.keymap.set("n", "<leader>acs", "<cmd>CodeCompanionSummary<cr>", { desc = " Summary" })
     end,
   },
