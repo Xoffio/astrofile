@@ -22,6 +22,9 @@ return {
             },
           },
         },
+        action_palette = {
+          provider = "snacks",
+        },
       },
       -- Keep this commented if using copilot.
       -- adapters = {
@@ -90,5 +93,13 @@ return {
       -- Optional dependency to enable spinner status in chat.
       "lalitmee/codecompanion-spinners.nvim",
     },
+    config = function(_, opts)
+      require("codecompanion").setup(opts)
+      vim.keymap.set("n", "<leader>acc", "<cmd>CodeCompanionChat<cr>", { desc = "󱐏 Open New Chat" })
+      vim.keymap.set("n", "<leader>act", "<cmd>CodeCompanionChat toggle<cr>", { desc = " Toggle Chat" })
+      vim.keymap.set("n", "<leader>ach", "<cmd>CodeCompanionHistory<cr>", { desc = " History" })
+      vim.keymap.set("n", "<leader>aca", "<cmd>CodeCompanionActions<cr>", { desc = " Actions" })
+      vim.keymap.set("n", "<leader>acs", "<cmd>CodeCompanionSummary<cr>", { desc = " Summary" })
+    end,
   },
 }

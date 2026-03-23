@@ -20,4 +20,11 @@ return {
       auto_refresh = true,
     },
   },
+  config = function(_, opts)
+    require("copilot").setup(opts)
+    vim.keymap.set("n", "<leader>aCe", "<cmd>Copilot enable<cr>", { desc = " Enable Copilot" })
+    vim.keymap.set("n", "<leader>aCd", "<cmd>Copilot disable<cr>", { desc = " Disable Copilot" })
+    vim.keymap.set("n", "<leader>aCa", "<cmd>Copilot attach<cr>", { desc = "󱘖 Attach Copilot to Buffer" })
+    vim.keymap.set("n", "<leader>aCD", "<cmd>Copilot detach<cr>", { desc = " Detach Copilot from Buffer" })
+  end,
 }
