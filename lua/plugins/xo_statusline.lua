@@ -296,13 +296,32 @@ return {
               -- color = { main = "nav_icon_bg", left = "file_info_bg" },
             },
           },
+
+          -- Show the number of lines selected in visual mode, disable in other modes.
+          status.component.builder {
+            {
+              provider = function()
+                local mode = vim.fn.mode()
+                if mode:match "[vV\22]" then
+                  local starts = vim.fn.line "v"
+                  local ends = vim.fn.line "."
+                  local lines = math.abs(ends - starts) + 1
+                  return " " .. lines .. "󰩬"
+                end
+                return ""
+              end,
+            },
+            surround = { separator = "none", color = "file_info_bg" },
+          },
+
           -- add a navigation component and just display the percentage of progress in the file
           status.component.nav {
             -- add some padding for the percentage provider
-            percentage = { padding = { right = 1 } },
+            -- percentage = { padding = { right = 1 } },
+            ruler = { padding = { left = 1 } },
             -- disable all other providers
             -- ruler = false,
-            scrollbar = false,
+            -- scrollbar = false,
             -- use no separator and define the background color
             surround = { separator = "none", color = "file_info_bg" },
           },
