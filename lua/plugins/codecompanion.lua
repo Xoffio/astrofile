@@ -88,6 +88,8 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      -- Required adapter for Copilot users. If you're using a different adapter, you can remove this dependency.
+      "zbirenbaum/copilot.lua",
       -- Optional dependency to enable history extension
       "ravitemer/codecompanion-history.nvim",
       -- Optional dependency to enable spinner status in chat.

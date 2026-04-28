@@ -19,6 +19,9 @@ return {
       enabled = false,
       auto_refresh = true,
     },
+    filetypes = {
+      ["*"] = true,
+    },
   },
   config = function(_, opts)
     require("copilot").setup(opts)
