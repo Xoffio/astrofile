@@ -102,6 +102,7 @@ return {
       vim.keymap.set("n", "<leader>ach", "<cmd>CodeCompanionHistory<cr>", { desc = " History" })
       vim.keymap.set({ "n", "v" }, "<leader>aca", "<cmd>CodeCompanionActions<cr>", { desc = " Actions" })
       vim.keymap.set("n", "<leader>acs", "<cmd>CodeCompanionSummary<cr>", { desc = " Summary" })
+      vim.keymap.set("v", "<leader>acq", "<cmd>CodeCompanionChat Add<cr>", { desc = "󱈅 Ask with Selection" })
     end,
   },
 }
