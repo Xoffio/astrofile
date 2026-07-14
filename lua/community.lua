@@ -14,17 +14,4 @@ return {
   { import = "astrocommunity.pack.typescript", enabled = true },
   { import = "astrocommunity.pack.html-css", enabled = true },
   { import = "astrocommunity.pack.tailwindcss", enabled = true },
-  { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
-  {
-    -- further customize the options set by the community
-    "catppuccin",
-    opts = {
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
-      transparent_background = false, -- disables setting the background color.
-      background = {
-        light = "latte",
-        dark = "mocha",
-      },
-    },
-  },
 }
