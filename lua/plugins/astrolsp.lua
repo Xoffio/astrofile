@@ -98,6 +98,21 @@ return {
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
         },
+        ["<Leader>lR"] = {
+          function() Snacks.picker.lsp_references() end,
+          desc = "References of current symbol",
+          cond = "textDocument/references",
+        },
+        ["<Leader>lci"] = {
+          function() Snacks.picker.lsp_incoming_calls() end,
+          desc = "Incoming calls",
+          cond = "textDocument/prepareCallHierarchy",
+        },
+        ["<Leader>lco"] = {
+          function() Snacks.picker.lsp_outgoing_calls() end,
+          desc = "Outgoing calls",
+          cond = "textDocument/prepareCallHierarchy",
+        },
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
