@@ -79,8 +79,20 @@ winget install -e --id=JesseDuffield.lazygit
 ### Ripgrep
 
 ```bash
+
+# Ubuntu
+sudo apt install ripgrep -y
+
 # Windows 11
 winget install BurntSushi.ripgrep.MSVC
+```
+
+### If having gcc errors
+
+```sh
+# Ubuntu
+sudo apt update && sudo apt install -y build-essential
+
 ```
 
 ### Nerd Fonts
