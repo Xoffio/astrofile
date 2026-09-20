@@ -1,14 +1,15 @@
 local enable = false
 if not enable then return {} end
 
--- local sysname = vim.uv.os_uname().sysname
--- local is_win = sysname == "Windows_NT"
+local sysname = vim.uv.os_uname().sysname
+local is_win = sysname == "Windows_NT"
 
 return {
   {
     "olimorris/codecompanion.nvim",
-    version = "^19.0.0",
+    version = "^19.25.0",
     opts = {
+
       display = {
         chat = {
           --   show_header_separator = false,
@@ -22,39 +23,47 @@ return {
             },
           },
         },
+        diff = {
+          enabled = true,
+        },
         action_palette = {
           provider = "snacks",
         },
       },
-      -- Keep this commented if using copilot.
-      -- adapters = {
-      --   ollama = function()
-      --     return require("codecompanion.adapters").extend("ollama", {
-      --       env = {
-      --         url = "http://localhost:11434",
-      --         api_key = is_win and "APPDATA" or "TERM",
-      --       },
-      --       headers = {
-      --         ["Content-Type"] = "application/json",
-      --         ["Authorization"] = "Bearer ${api_key}",
-      --       },
-      --       parameters = {
-      --         sync = true,
-      --       },
-      --     })
-      --   end,
-      -- },
-      -- strategies = {
-      --   chat = {
-      --     adapter = "ollama",
-      --   },
-      --   inline = {
-      --     adapter = "ollama",
-      --   },
-      --   cmd = {
-      --     adapter = "ollama",
-      --   },
-      -- },
+
+      adapters = {
+        http = {
+          -- Enable the Ollama adapter for local LLMs
+          ollama = function()
+            return require("codecompanion.adapters").extend("ollama", {
+              env = {
+                url = "http://localhost:11434",
+                api_key = is_win and "APPDATA" or "TERM",
+              },
+              headers = {
+                ["Content-Type"] = "application/json",
+                ["Authorization"] = "Bearer ${api_key}",
+              },
+              parameters = {
+                sync = true,
+              },
+            })
+          end,
+        },
+      },
+
+      interactions = {
+        chat = {
+          adapter = "copilot",
+        },
+        inline = {
+          adapter = "copilot",
+        },
+        cmd = {
+          adapter = "copilot",
+        },
+      },
+
       extensions = {
         -- Enable history extension to save and manage your chats
         history = {
