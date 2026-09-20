@@ -21,6 +21,9 @@ return {
       },
       astrodark = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },
+        -- FloatBorder = { fg = "#508bb2", bg = "NONE" },
+        -- WinSeparator = { fg = "#39637e", bg = "NONE" },
+        -- NeoTreeWinSeparator = { fg = "#39637e", bg = "none" },
       },
     },
     -- Icons can be configured throughout the interface
