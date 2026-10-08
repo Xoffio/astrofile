@@ -63,7 +63,11 @@ return {
       taplo = {
         on_attach = function(client, bufnr)
           local fname = vim.api.nvim_buf_get_name(bufnr)
-          if fname:match "%.chezmoiexternal%.toml$" or fname:match "/%.chezmoiexternals?/.+%.toml$" then
+          if
+            fname:match "%.chezmoiexternal%.toml$"
+            or fname:match "/%.chezmoitemplates?/.+%.toml$"
+            or fname:match "/%.chezmoiexternals?/.+%.toml$"
+          then
             vim.schedule(function() vim.lsp.buf_detach_client(bufnr, client.id) end)
           end
         end,
